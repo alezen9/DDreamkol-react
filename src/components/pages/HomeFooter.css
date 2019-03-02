@@ -1,0 +1,54 @@
+.footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    width: 100%;
+    margin: 3em 0;
+}
+
+.footer .wrapper {
+    max-width: 80%;
+    min-height: 10em;
+    padding: 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(16, 12, 13, 0.1);
+    border-radius: 15px;
+}
+
+.footer .wrapper a,
+.footer .wrapper div.tooltip {
+    text-decoration: none;
+    color: #CBDBC0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+    height: 2.7em;
+    margin: 1em;
+    background: #252525de;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 200;
+}
+
+.footer .wrapper a i,
+.footer .wrapper div.tooltip i {
+    font-size: 1.1em;
+    margin-right: 1em;
+}
+
+@media all and (max-width: 900px){
+    .footer .wrapper {
+        min-width: 290px;
+        flex-direction: column;
+    }
+    .footer .wrapper a,
+    .footer .wrapper div.tooltip {
+        width: 230px;
+    }
+}
