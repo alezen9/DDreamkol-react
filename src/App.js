@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Redirect } from 'react-router';
+//import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
 // components and pages
-import Home from './components/pages/Home';
+import Home from './components/pages/Home/Home';
 import Navbar from './components/Navbar';
+import Info from './components/pages/Info/Info';
+import AboutDDreamkol from './components/pages/AboutDDreamkol/AboutDDreamkol';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      top: 0
+    }
+  }
+
+  componentDidMount() { window.addEventListener("scroll", () => { this.setState({ top: window.scrollY }) }) }
 
   render() {
     return (
       <BrowserRouter>
-            <div className="App">
-              <Navbar />
-              <div className="content">
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Redirect from="*" to="/" />
-                </Switch>
-              </div>
-              <p className="app-footer">{`${new Date().getFullYear()} - Aleksandar Gjoreski`}</p>
-            </div>
+        <div className="App">
+          <Navbar />
+          <React.Fragment>
+            <Switch>
+            <Route exact path="/about" component={AboutDDreamkol} />)} />
+              <Route exact path="/info/:village" component={Info} />)} />
+              <Route path="/" component={Home} />
+              {/* <Redirect from="*" to="/" /> */}
+            </Switch>
+          </React.Fragment>
+          {this.state.top > window.innerHeight ? <a href="#top"><div className="scrollToTop"></div></a> : ''}
+          <p className="app-footer">{`${new Date().getFullYear()} - Aleksandar Gjoreski`}</p>
+        </div>
       </BrowserRouter>
     );
   }

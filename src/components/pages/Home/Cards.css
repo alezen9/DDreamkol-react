@@ -1,0 +1,98 @@
+.villages {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    padding: 5em 0;
+}
+
+
+.card {
+  width: 290px;
+  height: 400px;
+  background-color: #222;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 10px rgb(0, 0, 0);
+  margin: 1em;
+  cursor: pointer;
+  }
+  
+  .card:hover .hoverMask {
+    opacity: 1;
+  }
+
+  .card:hover .mediaButton,
+  .card:hover .infoButton {
+    transform: scale(1)
+  }
+
+  .hoverMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 290px;
+    height: 400px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+
+  .card .title-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 290px;
+    height: 200px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, black, transparent);
+    z-index: 1;
+  }
+
+  .card .village-name {
+    position: relative;
+    font-size: 2.3em;
+    margin-left: .5em;
+    color: #D7C469;
+    z-index: 2;
+    font-weight: 400;
+  }
+  
+  .card .mediaButton,
+  .card .infoButton {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: #252525de;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .card .mediaButton {
+    left: 110px;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) .1s;
+  }
+
+  .card .mediaButton > i,
+  .card .infoButton > i {
+    font-size: 1.5em;
+    color: #B5D878;
+  }
+
+  @media screen and (max-width: 1025px) {
+    .villages {
+      width: 100%;
+    }
+  }

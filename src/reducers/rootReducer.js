@@ -1,6 +1,5 @@
 const initState = {
-    language: 'mkd',
-    mode: 'day'
+    language: 'mkd'
 }
 
 const rootReducer = (state = initState, action) => {
@@ -9,11 +8,6 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 language: action.payload.language
-            }
-        case 'SET_MODE':
-            return {
-                ...state,
-                mode: action.payload.mode
             }
         default:
             return state;

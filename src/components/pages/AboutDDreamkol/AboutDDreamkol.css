@@ -1,0 +1,39 @@
+.about {
+    position: relative;
+    width: 100vw; min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.about .section h2 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.about .section p {
+    line-height: 1.7em;
+}
+
+img.inTextRight {
+    width: 500px;
+    border-radius: 7px;
+    float: right;
+    -webkit-filter: drop-shadow(0 0 3px black);
+    filter: drop-shadow(0 0 3px black);
+    padding: 2px;
+    margin: 15px 0 15px 15px;
+}
+
+@media all and (max-width: 470px) {
+    .about .section h2 {
+        font-size: 1.7em;
+    }
+}
+
+@media all and (max-width: 991px) {
+    img.inTextRight {
+        width: 100%;
+    }
+}

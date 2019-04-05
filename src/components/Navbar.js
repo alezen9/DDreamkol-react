@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 //actions
-import { setLanguage, setMode } from '../actions/index';
+import { setLanguage } from '../actions/index';
 // css
 import './Navbar.css';
 
@@ -14,10 +14,7 @@ class Navbar extends Component {
 
   changeLng = (e) => { this.props.setLanguage(e.target.id) }
 
-  setModeToggle = (e) => { this.props.setMode(e.target.checked) }
-
   render() {
-    console.log(this.props)
     const { language } = this.props;
     return (
       <header>
@@ -46,13 +43,6 @@ class Navbar extends Component {
                 <span id='eng' className="flag eng" onClick={this.changeLng}></span>
               </div>
             </li>
-            <li>
-              <div className="toggle-box">
-                <input type="checkbox" name="checkbox1" id="toggle-box-checkbox" onClick={this.setModeToggle} />
-                <label htmlFor="toggle-box-checkbox" className="toggle-box-label-left"></label>
-                <label htmlFor="toggle-box-checkbox" className="toggle-box-label"></label>
-              </div>
-            </li>
           </ul>
         </nav>
         <label htmlFor="nav-toggle" className="nav-toggle-label">
@@ -65,15 +55,14 @@ class Navbar extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...state,
+    language: state.language,
     ...ownProps
   }
 }
 
 const mapDidpatchToProps = (dispatch) => {
   return {
-    setLanguage: (lng) => { dispatch(setLanguage(lng)) },
-    setMode: (val) => { dispatch(setMode(val)) }
+    setLanguage: (lng) => { dispatch(setLanguage(lng)) }
   }
 }
 

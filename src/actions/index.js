@@ -7,12 +7,3 @@ export function setLanguage(lng) {
         }
     }
 }
-
-export function setMode(val) {
-    return {
-        type: 'SET_MODE',
-        payload: {
-            mode: val ? 'night' : 'day'
-        }
-    }
-}

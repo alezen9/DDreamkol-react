@@ -17,6 +17,7 @@
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
+    background-color: aliceblue;
 }
 
 .home .landing{
@@ -29,6 +30,9 @@
 
 .home .landing-mask{
     position: absolute;
+    background-image: url('/media/home/bg-small.jpg');
+    background-position: 25%;
+    background-size: cover;
     top: 0; left: 0;
     width: 100vw; height: 145vh;
     z-index: 0;
@@ -43,7 +47,7 @@
     left: 0;
     width: 100vw;
     height: 45vh;
-    background: linear-gradient(to top, #CBDBC0 20%, transparent);
+    background: linear-gradient(to top, aliceblue 20%, transparent);
   }
 
 .home .shard {
