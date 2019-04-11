@@ -3,37 +3,43 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 //actions
-import { setLanguage } from '../actions/index';
+import { setLanguage } from '../../actions/index';
 // css
 import './Navbar.css';
 
 
 class Navbar extends Component {
+  constructor() {
+    super();
+    this.checkNav = React.createRef();
+  }
 
-  takeMeHome = (e) => { this.props.history.push('/') }
+  hideNavAfterLinkClick = () => { this.checkNav.current.checked = false }
 
-  changeLng = (e) => { this.props.setLanguage(e.target.id) }
+  takeMeHome = (e) => { this.props.history.push('/'); this.hideNavAfterLinkClick(); }
+
+  changeLng = (e) => { this.props.setLanguage(e.target.id); this.hideNavAfterLinkClick(); }
 
   render() {
     const { language } = this.props;
     return (
       <header>
         <div onClick={this.takeMeHome} className="logo"></div>
-        <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+        <input ref={this.checkNav} type="checkbox" id="nav-toggle" className="nav-toggle" />
         <nav>
           <ul>
             <li>
-              <Link className="menu" aria-label="home" to="/">
+              <Link className="menu" aria-label="home" to="/" onClick={this.hideNavAfterLinkClick}>
                 {language === 'mkd' ? 'Почетна' : 'Home'}
               </Link>
             </li>
             <li>
-              <Link className="menu" aria-label="about" to="/about">
+              <Link className="menu" aria-label="about" to="/about" onClick={this.hideNavAfterLinkClick}>
                 {language === 'mkd' ? 'За Долни Дримкол' : 'About Dolni Drimkol'}
               </Link>
             </li>
             <li>
-              <Link className="menu" aria-label="ddis" to="/ddis">
+              <Link className="menu" aria-label="ddis" to="/ddis" onClick={this.hideNavAfterLinkClick}>
                 {language === 'mkd' ? 'Долнодримколски Илинденски Средби' : 'Dolnodrimkolski Ilindenski Sredbi'}
               </Link>
             </li>

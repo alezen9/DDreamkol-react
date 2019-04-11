@@ -17,7 +17,7 @@
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: aliceblue;
+    background-color: #e2e1e0;
 }
 
 .home .landing{
@@ -47,7 +47,7 @@
     left: 0;
     width: 100vw;
     height: 45vh;
-    background: linear-gradient(to top, aliceblue 20%, transparent);
+    background: linear-gradient(to top, #e2e1e0 20%, transparent);
   }
 
 .home .shard {

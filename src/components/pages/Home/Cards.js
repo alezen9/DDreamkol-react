@@ -15,7 +15,7 @@ class Cards extends Component {
 
     componentDidMount() { BackgroundLazyLoader() }
 
-    renderSections = () => {
+    renderCards = () => {
         const { language } = this.props;
         let arr = language === 'mkd' ? [...mkd_v] : [...eng_v];
         let villages = arr.map((el, i) => {
@@ -25,10 +25,10 @@ class Cards extends Component {
                     <div className="title-mask"></div>
                     <h3 className="village-name">{el}</h3>
                     <Link to={`/info/${links[i]}`} aria-label="info" className="infoButton">
-                        <i className="fas fa-book-open"></i>
+                        <i className="fas fa-book"></i>
                     </Link>
                     <Link to={`/gallery/${links[i]}`} aria-label="gallery" className="mediaButton">
-                        <i className="far fa-image"></i>
+                        <i className="far fa-images"></i>
                     </Link>
                 </div>
             )
@@ -39,7 +39,7 @@ class Cards extends Component {
     render() {
         return (
             <div id="villages" className="villages">
-                {this.renderSections()}
+                {this.renderCards()}
             </div>
         )
     }

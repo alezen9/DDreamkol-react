@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-// defer bg images
-import { BackgroundLazyLoader } from '../../../deferImgs';
 // css
 import './Info.css';
 import './expButton.css';
-
+// db
 import db from './db'
 // components
-import Sections from './Sections';
+import Section from '../../Section';
 import ExpButton from './ExpButton';
+import Table from './Table';
+import Button from '../../Button';
 
 class Info extends Component {
     constructor(props) {
@@ -19,67 +18,25 @@ class Info extends Component {
         this.state = {
             btnClasslist: 'share-btn',
             village: props.match.params.village
-
         }
     }
 
-    componentDidMount() { BackgroundLazyLoader() }
+    componentDidMount() { window.scrollTo(0, 0) }
+
+    renderSections = (v, l) => { return db[v][l].titles.map((title, i) => <Section key={i} title={title} content={db[v][l].sections[i]} i={i} />) }
 
     render() {
         const { lng } = this.props;
         const { village } = this.state;
         return (
             <div className="info-page">
-                <div className="bgPage" data-background-image-url='/media/home/bg.jpg'></div>
                 <h1 className="name">{db[village][lng].name}</h1>
-                <Link to={`/gallery/${village}`} className="img-btn">
-                    <i className="far fa-images"></i>
-                    {lng === 'mkd' ? "Галерија" : "Gallery"}
-                </Link>
-                {
-                    lng ?
-                        <ExpButton l={lng} v={village} />
-                        :
-                        <div></div>
-                }
-                {
-                    lng ?
-                        <div className="idCard">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <i className="fas fa-arrows-alt-v"></i>
-                                            {lng === 'mkd' ? 'Височина' : 'Height'}
-                                        </td>
-                                        <td>{db[village].tab[0]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <i className="fas fa-users"></i>
-                                            {lng === 'mkd' ? 'Население' : 'Population'}
-                                        </td>
-                                        <td>{db[village].tab[1]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <i className="fas fa-envelope-open"></i>
-                                            {lng === 'mkd' ? 'П. Код' : 'P. Code'}
-                                        </td>
-                                        <td>6337</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        :
-                        <div></div>
-                }
-                {
-                    lng ?
-                        <Sections l={lng} v={village} />
-                        :
-                        <div></div>
-                }
+                <Button to={`/gallery/${village}`} iconClass="far fa-images" title={lng === 'mkd' ? "Галерија" : "Gallery"} />
+                <ExpButton l={lng} v={village} />
+                <Table l={lng} tab={db[village].tab} />
+                <div className="sections">
+                    {this.renderSections(village, lng)}
+                </div>
             </div>
         )
     }

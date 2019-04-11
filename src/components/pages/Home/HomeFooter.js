@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// components
+import Button from '../../Button';
 // css
 import './HomeFooter.css';
 
@@ -12,19 +13,13 @@ class HomeFooter extends Component {
         return (
             <div className="footer">
                 <div className="wrapper">
-                    <Link aria-label="aboutUs" to="/aboutUs" >
-                        <i className="fas fa-info-circle"></i>
-                        {language === 'mkd' ? 'Инфо' : 'About us'}
-                    </Link>
-                    <Link aria-label="tac" to="/tac" >
-                        <i className="fas fa-user-shield"></i>
-                        {language === 'mkd' ? 'Правила и Услови' : 'Terms and Conditions'}
-                    </Link>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000" title="Share on facebook">
+                    <Button to="/aboutUs" iconClass="fas fa-info-circle" title={language === 'mkd' ? "Инфо" : "About us"} btnClasses="margin-up-1" />
+                    <Button to="/tac" iconClass="fas fa-user-shield" title={language === 'mkd' ? 'Правила и Услови' : 'Terms and Conditions'} btnClasses='margin-up-1' />
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000" title="Share on facebook" className="btn margin-up-1">
                         <i className="fab fa-facebook"></i>
                         {language === 'mkd' ? 'Сподели на Фејсбук' : 'Share on Facebook'}
                     </a>
-                    <div className="tooltip">
+                    <div className="btn margin-up-1">
                         <i className="fas fa-envelope-open"></i>
                         {language === 'mkd' ? 'Контакти' : 'Contacts'}
                     </div>

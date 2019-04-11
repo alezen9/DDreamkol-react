@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 
 // components and pages
 import Home from './components/pages/Home/Home';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import Info from './components/pages/Info/Info';
+import Gallery from './components/pages/Gallery/Gallery';
 import AboutDDreamkol from './components/pages/AboutDDreamkol/AboutDDreamkol';
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
             <Switch>
             <Route exact path="/about" component={AboutDDreamkol} />)} />
               <Route exact path="/info/:village" component={Info} />)} />
+              <Route exact path="/gallery/:village" component={Gallery} />)} />
               <Route path="/" component={Home} />
               {/* <Redirect from="*" to="/" /> */}
             </Switch>

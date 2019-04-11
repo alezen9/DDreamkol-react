@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dbAbout from './dbAbout';
-import { BackgroundLazyLoader } from '../../../deferImgs';
+// components
+import BusVillages from './BusVillages';
 // css
 import './AboutDDreamkol.css';
 
 class AboutDDreamkol extends Component {
 
-    componentDidMount() { BackgroundLazyLoader() }
+    componentDidMount() { window.scrollTo(0, 0) }
 
     renderText = (arr) => {
         return arr.map((line, i) => {
-            //return (line === 'PICTURE' ? <img class="inTextRight" src="/media/about/via_egnatia.png" alt="Via Egnatia"></img> : <p className="textLine" key={`textLine${i}`}>{line}</p>)
             return (line === 'PICTURE' ? <img key={`textLine${i}`} className="inTextRight" src="/media/about/via_egnatia.png" alt="Via Egnatia"></img> : (<span key={`textLine${i}`}>{line}<br></br></span>))
         })
     }
@@ -31,9 +31,10 @@ class AboutDDreamkol extends Component {
     }
 
     render() {
+        const { language } = this.props;
         return (
             <div className="about">
-                <div className="bgPage" data-background-image-url='/media/home/bg.jpg'></div>
+                <BusVillages lng={language} />
                 {this.renderSections()}
             </div>
         )
