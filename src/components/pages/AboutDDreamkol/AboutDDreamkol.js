@@ -2,40 +2,48 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dbAbout from './dbAbout';
 // components
-import BusVillages from './BusVillages';
+import Section from '../../Section';
 // css
 import './AboutDDreamkol.css';
+
+// const myObj = {
+//     1: [
+//         {
+//             company: 'beli mugri',
+//             daily: true,
+//             stops: ['dl', 'piskupshtina', 'nerezi'],
+//             working: ['00:00', '00:00'],
+//             holydays: ['01:00', '10:00']
+//         },
+//         {
+//             company: 'mugri',
+//             daily: true,
+//             stops: ['dl', 'piskupshtina', 'nerezi'],
+//             working: ['00:00', '00:00'],
+//             holydays: ['01:00', '10:00']
+//         },
+//         {
+//             company: 'beli',
+//             daily: true,
+//             stops: ['dl', 'piskupshtina', 'nerezi'],
+//             working: ['00:00', '00:00'],
+//             holydays: ['01:00', '10:00']
+//         }
+//     ]
+// }
 
 class AboutDDreamkol extends Component {
 
     componentDidMount() { window.scrollTo(0, 0) }
 
-    renderText = (arr) => {
-        return arr.map((line, i) => {
-            return (line === 'PICTURE' ? <img key={`textLine${i}`} className="inTextRight" src="/media/about/via_egnatia.png" alt="Via Egnatia"></img> : (<span key={`textLine${i}`}>{line}<br></br></span>))
-        })
-    }
-
-    renderSections = () => {
-        const { language } = this.props;
-        return dbAbout[language].titles.map((el, i) => {
-            return (
-                <div className="section" key={`section${i}`}>
-                    <h2>{el}</h2>
-                    <p>
-                        {this.renderText(dbAbout[language].sections[i])}
-                    </p>
-                </div>
-            )
-        })
-    }
+    renderSections = (l) => { return dbAbout[l].titles.map((title, i) => <Section key={i} title={title} content={dbAbout[l].sections[i]} />) }
 
     render() {
-        const { language } = this.props;
+        const { lng } = this.props;
         return (
             <div className="about">
-                <BusVillages lng={language} />
-                {this.renderSections()}
+                <h1 className="name">{lng === 'mkd' ? 'За Долни Дримкол' : 'About Dolni Drimkol'}</h1>
+                {this.renderSections(lng)}
             </div>
         )
     }
@@ -43,7 +51,7 @@ class AboutDDreamkol extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        language: state.language,
+        lng: state.language,
         ...ownProps
     }
 }

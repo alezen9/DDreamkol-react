@@ -8,53 +8,49 @@ import { setLanguage } from '../../actions/index';
 import './Navbar.css';
 
 
-class Navbar extends Component {
+class NavbarApple extends Component {
   constructor() {
     super();
-    this.checkNav = React.createRef();
+    this.state = {
+      headerClasses: 'header'
+    }
   }
 
-  hideNavAfterLinkClick = () => { this.checkNav.current.checked = false }
+  changeLng = (e) => { this.props.setLanguage(e.target.id) }
 
-  takeMeHome = (e) => { this.props.history.push('/'); this.hideNavAfterLinkClick(); }
-
-  changeLng = (e) => { this.props.setLanguage(e.target.id); this.hideNavAfterLinkClick(); }
+  toggleMenu = () => { if(window.innerWidth < 1020) this.setState({ headerClasses: this.state.headerClasses === 'header' ? 'header menu-opened' : 'header' }); }
 
   render() {
     const { language } = this.props;
+    const { headerClasses } = this.state;
     return (
-      <header>
-        <div onClick={this.takeMeHome} className="logo"></div>
-        <input ref={this.checkNav} type="checkbox" id="nav-toggle" className="nav-toggle" />
-        <nav>
-          <ul>
-            <li>
-              <Link className="menu" aria-label="home" to="/" onClick={this.hideNavAfterLinkClick}>
-                {language === 'mkd' ? 'Почетна' : 'Home'}
-              </Link>
-            </li>
-            <li>
-              <Link className="menu" aria-label="about" to="/about" onClick={this.hideNavAfterLinkClick}>
-                {language === 'mkd' ? 'За Долни Дримкол' : 'About Dolni Drimkol'}
-              </Link>
-            </li>
-            <li>
-              <Link className="menu" aria-label="ddis" to="/ddis" onClick={this.hideNavAfterLinkClick}>
-                {language === 'mkd' ? 'Долнодримколски Илинденски Средби' : 'Dolnodrimkolski Ilindenski Sredbi'}
-              </Link>
-            </li>
-            <li>
-              <div>
-                <span id='mkd' className="flag mk" onClick={this.changeLng}></span>
-                <span id='eng' className="flag eng" onClick={this.changeLng}></span>
-              </div>
-            </li>
-          </ul>
-        </nav>
-        <label htmlFor="nav-toggle" className="nav-toggle-label">
-          <span></span>
-        </label>
-      </header>
+      <div className={headerClasses}>
+        <div className="burger-container" onClick={this.toggleMenu}>
+          <div id="burger">
+            <div className="bar topBar"></div>
+            <div className="bar btmBar"></div>
+          </div>
+        </div>
+        <ul className="menu">
+          <li className="menu-item" onClick={this.toggleMenu}>
+            <Link className="link-item" aria-label="home" to="/">
+              {language === 'mkd' ? 'Почетна' : 'Home'}
+            </Link>
+          </li>
+          <li className="menu-item" onClick={this.toggleMenu}>
+            <Link className="link-item" aria-label="about" to="/about">
+              {language === 'mkd' ? 'За Долни Дримкол' : 'About Dolni Drimkol'}
+            </Link>
+          </li>
+          <li className="menu-item" onClick={this.toggleMenu}>
+            <Link className="link-item" aria-label="ddis" to="/ddis">
+              {language === 'mkd' ? 'Дд. И. Средби' : 'Dd. I. Sredbi'}
+            </Link>
+          </li>
+          <li  className="menu-item" > <div id="mkd" onClick={this.changeLng}>{language === 'mkd' ? 'Македонски' : 'Macedonian'} </div></li>
+          <li  className="menu-item"> <div id="eng" onClick={this.changeLng}>{language === 'mkd' ? 'Англиски' : 'English'} </div></li>
+        </ul>
+      </div>
     )
   }
 }
@@ -72,4 +68,4 @@ const mapDidpatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDidpatchToProps)(withRouter(Navbar));
+export default connect(mapStateToProps, mapDidpatchToProps)(withRouter(NavbarApple));

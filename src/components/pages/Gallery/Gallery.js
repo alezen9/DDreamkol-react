@@ -21,24 +21,36 @@ class Gallery extends Component {
     }
 
     componentDidMount() {
-        fetch('http://192.168.0.3:5000/api/getPhotos/' + this.state.name)
+        fetch('http://localhost:5000/api/getPhotos/' + this.state.name)
             .then(res => res.json())
             .then(data => {
                 if (Array.from(data).length !== 0) {
-                    let big = data.map(el => el.images[0].source)
-                    this.setState({ big: big })
+                    let small = [];
+                    let captions = [];
+                    let big = data.map(el => {
+                        small.push(el.images[el.images.length - 1].source);
+                        captions.push(el.name ? el.name : '')
+                        return el.images[0].source;
+                    })
+                    this.setState({ big: big, small: small, captions: captions })
                 }
                 this.setState({ done: true })
             })
-            window.scrollTo(0,0);
+        window.scrollTo(0, 0);
+    }
+
+    showImage = (e) => {
+        let delay = e.target.alt*30;
+        let el = e.target;
+        setTimeout(() => el.classList.add('show'), delay);
     }
 
     renderPics = () => {
-        const { big } = this.state;
+        const { big, small, captions } = this.state;
         return big.map((el, i) => {
             return (
-                <a key={i} data-fancybox="gallery" href={el} data-options='{"loop" : true, "buttons": ["close"]}' className="img">
-                    <img alt="" src={el} />
+                <a key={i} data-fancybox="gallery" href={el} data-options='{"loop" : true, "buttons": ["close"]}' data-caption={captions[i]} className="img">
+                    <img alt={i} src={small[i]} className="" onLoad={this.showImage}/>
                 </a>
             )
         })

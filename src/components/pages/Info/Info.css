@@ -4,38 +4,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    overflow: hidden;
-}
-
-.name {
-    width: 100%;
-    text-align: center;
-    font-size: 4.5em;
-    line-height: 1em;
-    letter-spacing: .1em;
-    color: #252525;
-    /* -webkit-text-stroke-width: .5px;
-   -webkit-text-stroke-color: rgba(203, 219, 192, 0.85); */
-    margin-top: 90px;
-}
-
-.img-btn {
-    background-color: lightgreen;
-    border-radius: 5px;
-    width: 230px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    font-size: 1.1em;
-    transition: box-shadow 0.5s ease-out;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}  
-
-.img-btn > i {
-    font-size: 1.3em;
-    margin-right: 1em;
 }
 
 .idCard {
@@ -48,10 +16,10 @@
 .idCard > table {
     width: 70%;
     background-color: #252525de;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     backdrop-filter: blur(5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 37.125px 70px -50.125px rgba(0,0,0,0.3);
 }
 .idCard > table > tbody > tr {
     display: flex;
@@ -80,43 +48,9 @@
     border-bottom: .3px solid aliceblue;
 }
 
-.sections {
-    margin-top: 200px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-}
-
-.section {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    padding: 2em 3em;
-    margin: 30px auto;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.section-title {
-    text-align: center;
-    font-size: 1.7em;
-}
-.section-content {
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.8em;
-}
-
 @media all and (max-width: 800px){
     .name {
-        font-size: 2.3em;
+        font-size: 2.7em;
         height: 2em;
     }
     .section {

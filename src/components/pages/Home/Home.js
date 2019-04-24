@@ -12,7 +12,7 @@ import HomeFooter from './HomeFooter';
 
 class Home extends Component {
 
-  componentDidMount() { BackgroundLazyLoader() }
+  componentDidMount() { BackgroundLazyLoader(); window.scrollTo(0, 0) }
 
   render() {
     const { language } = this.props;
