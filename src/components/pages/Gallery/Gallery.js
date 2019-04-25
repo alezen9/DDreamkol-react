@@ -21,7 +21,7 @@ class Gallery extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/api/getPhotos/' + this.state.name)
+        fetch('http://192.168.0.6:5000/api/getPhotos/' + this.state.name)
             .then(res => res.json())
             .then(data => {
                 if (Array.from(data).length !== 0) {
