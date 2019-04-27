@@ -47,8 +47,8 @@ class NavbarApple extends Component {
               {language === 'mkd' ? 'Дд. И. Средби' : 'Dd. I. Sredbi'}
             </Link>
           </li>
-          <li  className="menu-item" > <div id="mkd" onClick={this.changeLng}>{language === 'mkd' ? 'Македонски' : 'Macedonian'} </div></li>
-          <li  className="menu-item"> <div id="eng" onClick={this.changeLng}>{language === 'mkd' ? 'Англиски' : 'English'} </div></li>
+          <li className="menu-item" > <div id="mkd" onClick={this.changeLng}>{language === 'mkd' ? 'Македонски' : 'Macedonian'} </div></li>
+          <li className="menu-item"> <div id="eng" onClick={this.changeLng}>{language === 'mkd' ? 'Англиски' : 'English'} </div></li>
         </ul>
       </div>
     )

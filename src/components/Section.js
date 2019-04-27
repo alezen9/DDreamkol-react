@@ -9,7 +9,7 @@ const Section = ({ title, content }) => {
                     <img className="inTextRight" src={line.split(',')[1]} alt="Via Egnatia"></img>
                 </a>
                 :
-                (<span key={`textLine${i}`}>{line}<br></br></span>)
+                <span key={`textLine${i}`}>{line}<br></br></span>
             )
         })
     }
