@@ -41,7 +41,8 @@ class ExpandingButton extends Component {
                     {vName} → {lng === 'mkd' ? 'Струга' : 'Struga'}
                 </span>
                 <div className="close ion-close-round" onClick={this.close}>
-                    <i className="fas fa-times"></i>
+                    {/* <i className="fas fa-times"></i> */}
+                    &times;
                 </div>
                 <ul className="social">
                     <li>

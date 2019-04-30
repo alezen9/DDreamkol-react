@@ -50,6 +50,10 @@
     width: 160px;
     height: 160px;
   }
+  .gallery-page a.img:hover img {
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 @media all and (max-width: 875px) {

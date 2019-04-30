@@ -4,10 +4,11 @@ body {
   font-family: "Open Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   height: 100%;
   width: 100vw;
   overflow-x: hidden;
-  background-color: white;
+  background-color: #fff;
 }
 
 *{outline: 0; box-sizing: border-box;}
@@ -27,7 +28,6 @@ a {text-decoration: none; color: inherit;}
   align-items: center;
   margin: auto;
   font-size: 1.1em;
-  box-shadow: 0 10px 50px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   overflow: hidden;
 }  
@@ -88,8 +88,8 @@ a {text-decoration: none; color: inherit;}
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.671);
   border: none;
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   line-height: 40px;
   background-color: rgba(0, 0, 0, 0.418);
   background-image: url('/media/home/arrow-down.svg');
@@ -184,7 +184,8 @@ img.iconSVG {
   font-size: 4.5em;
   line-height: 1em;
   letter-spacing: -.02em;
-  color: #100C0D;
+  color: rgb(0, 0, 0);
+  font-weight: 400;
   /* -webkit-text-stroke-width: .5px;
  -webkit-text-stroke-color: rgba(203, 219, 192, 0.85); */
   margin-top: 90px;
@@ -217,11 +218,13 @@ img.iconSVG {
 }
 .section-title {
   text-align: center;
-  font-size: 1.7em;
+  font-size: 2em;
+  font-weight: 500;
+  color: rgb(51,51,51);
 }
 .section-content {
   font-size: 1em;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.8em;
   color: rgb(90, 90, 90);
 }
